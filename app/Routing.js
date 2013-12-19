@@ -1,14 +1,16 @@
 Grades.config( ['$routeProvider', function( $routeProvider ){
   $routeProvider
-    .when( '/profile/', {
-      templateUrl: 'partials/profile_list.html',
-      controller: 'ProfileListCtrl'
+    .when( '/home', {
+      templateUrl: 'pages/home.html',
+      controller: 'CourseCtrl'
     })
-      
-    .when( '/profile/:id', {
-      templateUrl: 'partials/profile_detail.html',
-      controller: 'ProfileDetailCtrl'
+    .when( '/details', {
+      templateUrl: 'pages/details.html',
+      controller: 'CourseCtrl'
     })
-
-    .otherwise( {redirectTo: '/profile'} );
+    .when( '/started', {
+      templateUrl: 'pages/started.html',
+      controller: 'StartedCtrl'
+    })
+    .otherwise( {redirectTo: '/home'} );
 }]);

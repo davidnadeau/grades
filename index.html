@@ -14,29 +14,16 @@
 		<div class="row">
 			<div class="col-3">
 				<div class="side-bar">
-					<a href="/index.php" class="logo">
+					<a href="#/home" class="logo">
 						<img src="images/logo.png">
 						<span>Grades</span>
 					</a>
-					<ul class="side-menu">
-						<li class="current">
-							<a href="/index.php">
-								<i class="icon-home"></i> Home
-							</a>
-						</li>
-						<li>
-							<a href="/index.php?page=register">
-								<i class="icon-heart"></i> Register
-							</a>
-						</li>
-						<li>
-							<a href="/index.php?page=login">
-								<i class="icon-lock"></i> Login
-							</a>
-						</li>
-						<li>
-							<a href="/index.php?page=gettingstarted">
-								<i class="icon-rocket"></i> Getting started
+					<ul class="side-menu" ng-controller="MenuCtrl">
+						<li ng-repeat="link in menuLinks" 
+							ng-class="{ 'current': $index == selectedIndex }"
+				            ng-click="itemClicked($index)"> 
+				            <a href="#/{{link.link}}">
+								<i class="icon-{{link.link}}"></i> {{link.text}}
 							</a>
 						</li>
 					</ul>
@@ -44,32 +31,18 @@
 			</div>
 
 			<div class="col-9">
-				<div class="content">
-						<div class="page-header">
-							<a href="/index.php?page=login"><i class="icon-lock"></i> Login</a>
-							<h1><i class="icon-bar-chart"></i> Grade Visualizer!</h1>
-						</div>
-						<div class="main-content">
-							<div ng-controller="CourseCtrl">
-								<input type="text" ng-model="courseListInput"/>
-								<input type="button" ng-click="onSubmit()"/>
-								<li ng-repeat="course in courses">
-									{{course.major}}
-									{{course.name}}
-									{{course.mark}}
-									{{course.credit}}
-									{{course.weight}}
-								</li>
-							</div>
-						</div>
-				</div>
+				<div ng-view></div>
 			</div>
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.js"></script>
 	<script src="app/App.js"></script>
-	<script src="app/Controllers.js"></script>
-	<script src="app/Services.js"></script>
+	<script src="app/Routing.js"></script>
+	<script src="app/Controllers/MenuCtrl.js"></script>
+	<script src="app/Controllers/Controllers.js"></script>
+	<script src="app/Controllers/StartedCtrl.js"></script>
+	<script src="app/Services/FormatCourses.js"></script>
 </body>
 
 </html>
