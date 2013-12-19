@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Grades">
+
+<head>
+	<title>Grades</title>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-3">
+				<div class="side-bar">
+					<a href="/index.php" class="logo">
+						<img src="images/logo.png">
+						<span>Grades</span>
+					</a>
+					<ul class="side-menu">
+						<li class="current">
+							<a href="/index.php">
+								<i class="icon-home"></i> Home
+							</a>
+						</li>
+						<li>
+							<a href="/index.php?page=register">
+								<i class="icon-heart"></i> Register
+							</a>
+						</li>
+						<li>
+							<a href="/index.php?page=login">
+								<i class="icon-lock"></i> Login
+							</a>
+						</li>
+						<li>
+							<a href="/index.php?page=gettingstarted">
+								<i class="icon-rocket"></i> Getting started
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-9">
+				<div class="content">
+						<div class="page-header">
+							<a href="/index.php?page=login"><i class="icon-lock"></i> Login</a>
+							<h1><i class="icon-bar-chart"></i> Grade Visualizer!</h1>
+						</div>
+						<div class="main-content">
+							<div ng-controller="CourseCtrl">
+								<input type="text" ng-model="courseListInput"/>
+								<input type="button" ng-click="onSubmit()"/>
+								<li ng-repeat="course in courses">
+									{{course.major}}
+									{{course.name}}
+									{{course.mark}}
+									{{course.credit}}
+									{{course.weight}}
+								</li>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+	<script src="app/App.js"></script>
+	<script src="app/Controllers.js"></script>
+	<script src="app/Services.js"></script>
+</body>
+
+</html>
