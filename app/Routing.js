@@ -4,6 +4,14 @@ Grades.config( ['$routeProvider', function( $routeProvider ){
       templateUrl: 'pages/home.html',
       controller: 'CourseCtrl'
     })
+    .when( '/register', {
+      templateUrl: 'pages/register.html',
+      controller: 'CourseCtrl'
+    })
+    .when( '/login', {
+      templateUrl: 'pages/login.html',
+      controller: 'CourseCtrl'
+    })
     .when( '/details', {
       templateUrl: 'pages/details.html',
       controller: 'CourseCtrl'

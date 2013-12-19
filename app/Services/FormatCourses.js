@@ -24,7 +24,6 @@ Grades.factory('FormatCourses', [function () {
 
 				//fill course object with remaining columns
 				var course = new Object();
-				//messy split, column 0 contains a lot of information
 				course.year   = columns[0].trim().split(" ")[0];
 				course.major  = columns[0].trim().split(" ")[1];
 				course.name   = columns[0].trim().split(" ")[2];
