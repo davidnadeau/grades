@@ -4,8 +4,15 @@
 		<h1><i class="icon-bar-chart"></i> Grade Visualizer!</h1>
 	</div>
 	<div class="main-content">
-		<input type="text" id="name"/>
-		<input type="text" id="major"/>
-		<input type="button"/>
+		<form action="php/register.php" method='post'>
+			<p>Profile Name:
+			<input type="text" name="name"/></p>
+			<p>Profile Major:
+			<input type="text" name="major"/></p>
+			<p>Profile Password:
+			<input type="text" name="password"/></p>
+			<p>
+			<input type='submit' value='Submit' /> </p> 
+		</form>
 	</div>
 </div>
