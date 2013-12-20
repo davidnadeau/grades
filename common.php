@@ -1,3 +1,4 @@
+#!/usr/bin/php-cgi
 <?php
 
 $SERVER   = "localhost";
