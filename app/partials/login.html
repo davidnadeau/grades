@@ -4,7 +4,7 @@
 	<a ng-show="isLoggedIn()"><i class="fa-lock"></i> {{user.name}}</a>
 	<h1><i class="icon-bar-chart"></i>Brock Grade Visualizer!</h1>
 </div>
-<div class="main-content">
+<div class="main-content" ng-hide="isLoggedIn()">
 	<form ng-model="userLogin">
 		<p>Profile Name:
 		<input type="text" ng-model="userLogin.name"/></p>
@@ -13,4 +13,8 @@
 		<p>
 		<input type='submit' value='Login' ng-click="login()"/> </p> 
 	</form>
+</div>
+<div class="main-content" ng-show="isLoggedIn()">
+	<p>Hello {{user.name}}, use sidebar to see your grades.</p>
+	<p>First time? Click the getting started tab and learn the ropes.</p>
 </div>

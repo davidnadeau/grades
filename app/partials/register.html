@@ -4,7 +4,7 @@
 	<a ng-show="isLoggedIn()"><i class="fa-lock"></i> {{user.name}}</a>
 	<h1><i class="icon-bar-chart"></i>Brock Grade Visualizer!</h1>
 </div>
-<div class="main-content">
+<div class="main-content" ng-hide="isLoggedIn()">
 	<form ng-model="userRegistration">
 		<p>Profile Name:
 		<input type="text" ng-model="userRegistration.name"/></p>
@@ -15,4 +15,7 @@
 		<p>
 		<input type='submit' value='Register' ng-click="register()"/> </p> 
 	</form>
+</div>
+<div class="main-content" ng-show="isLoggedIn()">
+	<p>User {{user.name}} successfully registered. Please log in.</p>
 </div>
