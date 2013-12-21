@@ -1,8 +1,8 @@
 <div class="content">
 	<div class="page-header">
-		<a href="#/login"    ng-hide="{{isLoggedIn()}}"><i class="fa-lock"></i> Login</a>
-		<a href="#/register" ng-hide="{{isLoggedIn()}}"><i class="fa-lock"></i> Register</a>
-		<a ng-show="{{isLoggedIn()}}"><i class="fa-lock"></i> {{user.name}}</a>
+		<a href="#/login"    ng-hide="isLoggedIn()">Login</a>
+		<a href="#/register" ng-hide="isLoggedIn()">Register</a>
+		<a ng-show="isLoggedIn()"><i class="fa-lock"></i> {{user.name}}</a>
 		<h1><i class="icon-bar-chart"></i> Grade Visualizer!</h1>
 	</div>
 	<div class="main-content">

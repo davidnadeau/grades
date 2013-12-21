@@ -1,7 +1,6 @@
 #!/usr/local/bin/php
 <?php
 include("connection.php");
-session_start();
 
 if (isset($_SESSION['profile_id'])) {
 	switch ($_SERVER['REQUEST_METHOD']) {
@@ -40,7 +39,5 @@ return;
 
 	$dbh->commit();
 	$query->execute(array(':name' => $profile_name, ':major' => $profile_major, ':password' => $profile_password));
-
-	header( "Location: /~dn09uo/project/grades/" );
 }*/
 ?>

@@ -1,18 +1,28 @@
 #!/usr/local/bin/php 
 <?php
 include("connection.php");
-session_start();
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	case "GET":
+		/*//check if logged in
+		if (isset($_SESSION['profile_id'])) {
+			$result = true;
+		}
+		//log in
+		else {*/
 
-		$profile_name = $_GET['userName'];
-
+		$user_data = json_decode($_GET['userData']);
+		$user_name = $user_data->userName;
+		$user_password = $user_data->userPassword;
 		$query = $db->prepare("SELECT * FROM `profiles` WHERE `name`=:name");
-		$query->execute(array(':name' => $profile_name));
+		$query->execute(array(':name' => $user_name));
 
 		$result = $query->fetch();
-		$_SESSION['profile_id'] = $result['profile_id'];
+		if ($user_password == $result['password'])
+			$_SESSION['profile_id'] = $result['profile_id'];
+		else {
+			$result = false;
+		}
 		break;
 	case "POST":
 		$profile_name = $_POST['name'];
