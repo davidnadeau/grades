@@ -1,5 +1,6 @@
-Grades.controller('StartedCtrl', function ($scope, FormatCourses) {
-	$scope.onSubmit = function() {
-		$scope.courses = FormatCourses.format($scope.courseListInput);
-	}
-})
+Grades.controller('StartedCtrl', function ($scope, Courses) {
+	$scope.getCourses = function() {
+		$scope.courses = Courses.query();
+		console.log($scope.courses);
+	};
+});

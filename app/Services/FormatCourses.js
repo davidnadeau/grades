@@ -25,17 +25,17 @@ Grades.factory('FormatCourses', [function () {
 				//fill course object with remaining columns
 				var course = new Object();
 				course.year   = columns[0].trim().split(" ")[0];
-				course.major  = columns[0].trim().split(" ")[1];
-				course.name   = columns[0].trim().split(" ")[2];
-				course.dur    = columns[0].trim().split(" ")[3];
-				course.sec    = columns[1].trim();
-				course.type   = columns[2].trim();
+				course.subject  = columns[0].trim().split(" ")[1];
+				course.number   = columns[0].trim().split(" ")[2];
+				//index [0][3] is duration, too granular, site deals with years
+				//index 1 is section, once again too granular
+				//index 2 is type (UG), site considers everything an UG credit
 				course.weight =+columns[3];
 				course.credit = columns[4].trim();
 				//index 5 is the halfway mark for full year courses.
 				//once again, who cares, disregard this col
 				course.mark   =+columns[6].split(" ")[0];
-				course.sCodes = columns[7]?columns[7].trim():"na";
+				//index 7 is for speciail codes, not using this
 				courseList.push(course);
 	    	});
 	    	return courseList;

@@ -1,17 +1,17 @@
 <div class="content">
 	<div class="page-header">
-		<a href="/index.php?page=login"><i class="icon-lock"></i> Login</a>
+		<a href="#/login"><i class="fa-lock"></i> Login</a>
+		<a href="#/register"><i class="fa-lock"></i> Register</a>
 		<h1><i class="icon-bar-chart"></i> Grade Visualizer!</h1>
 	</div>
 	<div class="main-content">
-		<input type="text" ng-model="courseListInput"/>
-		<input type="button" ng-click="onSubmit()"/>
-		<li ng-repeat="course in courses">
-			{{course.major}}
-			{{course.name}}
-			{{course.mark}}
-			{{course.credit}}
-			{{course.weight}}
-		</li>
+		<form ng-model="user">
+			<p>Profile Name:
+			<input type="text" ng-model="user.name"/></p>
+			<p>Profile Password:
+			<input type="text" ng-model="user.password"/></p>
+			<p>
+			<input type='submit' value='Login' ng-click="verifyUser()"/> </p> 
+		</form>
 	</div>
 </div>

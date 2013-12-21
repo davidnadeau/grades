@@ -4,12 +4,12 @@ Grades.factory('QueryCourses', [function () {
   	};
   	
   	var Courses = function() {
-  		var majors = [];
+  		var subjects = [];
   		return {
   			exists: function(c) {
   				var dup = false;
-  				forEach(majors, function(m) {
-  					if (m.major === c)
+  				forEach(subjects, function(m) {
+  					if (m.subject === c.subject)
   						dup = true;
   				});
   				return dup;
@@ -17,8 +17,8 @@ Grades.factory('QueryCourses', [function () {
   			update: function(c) {
   				if (isNumber(c.mark)) {
   					var weight = c.weight*2;
-	  				forEach(majors, function(m) {
-	  					if (m.major === c.major) {
+	  				forEach(subjects, function(m) {
+	  					if (m.subject === c.subject) {
 	  						m.mark+=c.mark*weight;
 	  						m.count+=weight;
 	  					}
@@ -29,7 +29,7 @@ Grades.factory('QueryCourses', [function () {
   				if (isNumber(c.mark)) {
 	  				var course = new Object();
 	  				var weight = c.weight*2;
-					course.major = c.major;
+					course.subject = c.subject;
 					course.mark = c.mark*weight;
 					course.count = weight;
 					majors.push(course);
@@ -48,26 +48,26 @@ Grades.factory('QueryCourses', [function () {
 		minorAverage: function(courses) {
 			var minorCourses = [];
 			forEach(courses, function(c) {
-				if (!c.major === 'COSC') minorCourses.push(c);
+				if (!c.subject === 'COSC') minorCourses.push(c);
 			});
 			return sumMarks(minorCourses)/minorCourses.length;
 		},
 		majorAverage: function(courses) {
 			var majorCourses = [];
 			forEach(courses, function(c) {
-				if (c.major === 'COSC') majorCourses.push(c);
+				if (c.subject === 'COSC') majorCourses.push(c);
 			});
 			return sumMarks(majorCourses)/majorCourses.length;
 		},
 		courseDistribution: function(courses) {
-			var coursesByMajor = new Courses();
+			var coursesBySubject = new Courses();
 			forEach(courses, function(c) {
-				if (coursesByMajor.exists(c.major))
-					coursesByMajor.update(c);
+				if (coursesBySubject.exists(c))
+					coursesBySubject.update(c);
 				else
-					coursesByMajor.insert(c);
+					coursesBySubject.insert(c);
 			});
-			return coursesByMajor.getCourses();
+			return coursesBySubject.getCourses();
 		}
 	}
 }])

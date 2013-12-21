@@ -5,7 +5,7 @@ Grades.controller('MenuCtrl', function ($scope, FormatCourses) {
 		{link:"started",text:"Getting Started"}
 	];
 
- 	$scope.selectedIndex = 0; // Whatever the default selected index is, use -1 for no selection
+ 	$scope.selectedIndex = 0;
 
 	$scope.itemClicked = function ($index) {
 		$scope.selectedIndex = $index;
