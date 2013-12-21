@@ -5,6 +5,10 @@ Grades.factory('Users', ['$resource', function($resource) {
 			login: {
 				method: 'GET',
 				data:{userData:"@userData"}
+			},
+			register: {
+				method: 'POST',
+				data:{userData:"@userData"}
 			}
 		} 
 	);

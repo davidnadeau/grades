@@ -6,15 +6,15 @@
 		<h1><i class="icon-bar-chart"></i> Grade Visualizer!</h1>
 	</div>
 	<div class="main-content">
-		<form action="register.php" method='post'>
+		<form ng-model="userRegistration">
 			<p>Profile Name:
-			<input type="text" name="name"/></p>
+			<input type="text" ng-model="userRegistration.name"/></p>
 			<p>Profile Major:
-			<input type="text" name="major"/></p>
+			<input type="text" ng-model="userRegistration.major"/></p>
 			<p>Profile Password:
-			<input type="text" name="password"/></p>
+			<input type="text" ng-model="userRegistration.password"/></p>
 			<p>
-			<input type='submit' value='Submit' /> </p> 
+			<input type='submit' value='Register' ng-click="register()"/> </p> 
 		</form>
 	</div>
 </div>

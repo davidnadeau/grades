@@ -4,13 +4,6 @@ include("connection.php");
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	case "GET":
-		/*//check if logged in
-		if (isset($_SESSION['profile_id'])) {
-			$result = true;
-		}
-		//log in
-		else {*/
-
 		$user_data = json_decode($_GET['userData']);
 		$user_name = $user_data->userName;
 		$user_password = $user_data->userPassword;
@@ -23,19 +16,20 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		else {
 			$result = false;
 		}
+		$json = json_encode($result);
+		echo $json;
 		break;
 	case "POST":
-		$profile_name = $_POST['name'];
-		$profile_major = $_POST['major'];
-		$profile_password = $_POST['password'];
+		// $_POST is empty when using angular resouce to send post(wtf),
+		// this nasty hack is the only way to see the data....
+		$postdata = file_get_contents("php://input");
+		$user_data = json_decode($postdata)->userData;
+		$user_name = $user_data->userName;
+		$user_password = $user_data->userPassword;
+		$user_major = $user_data->userMajor;
 
 		$query = $db->prepare("INSERT INTO `dn09uo`.`profiles` (`profile_id`, `name`, `major`, `password`) VALUES (NULL, :name, :major, :password);");
-		$query->execute(array(':name' => $profile_name, ':major' => $profile_major, ':password' => $profile_password));
-		$result = $query->fetch();
-		break;
-	case "DELETE":
+		$query->execute(array(':name' => $user_name, ':major' => $user_major, ':password' => $user_password));
 		break;
 }
-$json = json_encode($result);
-echo $json;
 ?>
