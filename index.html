@@ -11,43 +11,45 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-3">
-				<div class="side-bar">
-					<a href="#/home" class="logo">
+				<div class="side-bar" ng-controller="MenuCtrl">
+					<a href="#/home" class="logo" ng-click="itemClicked(0)">
 						<img src="images/logo.png">
 						<span>Grades</span>
 					</a>
-					<ul class="side-menu" ng-controller="MenuCtrl">
+					<ul class="side-menu">
 						<li ng-repeat="link in menuLinks" 
-							ng-class="{ 'current': $index == selectedIndex }"
-				            ng-click="itemClicked($index)"> 
-				            <a href="#/{{link.link}}">
-								<i class="icon-{{link.link}}"></i> {{link.text}}
-							</a>
-						</li>
-					</ul>
-				</div>
+						ng-class="{ 'current': $index == selectedIndex }"
+						ng-click="itemClicked($index)"> 
+						<a href="#/{{link.link}}">
+							<i class="icon-{{link.link}}"></i> {{link.text}}
+						</a>
+					</li>
+				</ul>
 			</div>
+		</div>
 
-			<div class="col-9">
+		<div class="col-9">
+			<div class="content">
 				<div ng-view></div>
 			</div>
 		</div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-resource.js"></script>
-	<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
-	<script src="http://code.highcharts.com/highcharts.js"></script>
-	<script src="app/App.js"></script>
-	<script src="app/Routing.js"></script>
-	<script src="app/Controllers/MenuCtrl.js"></script>
-	<script src="app/Controllers/MainCtrl.js"></script>
-	<script src="app/Controllers/StartedCtrl.js"></script>
-	<script src="app/Directives/PieChart.js"></script>
-	<script src="app/Services/FormatCourses.js"></script>
-	<script src="app/Services/QueryCourses.js"></script>
-	<script src="app/Services/CourseRest.js"></script>
-	<script src="app/Services/UserRest.js"></script>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-resource.js"></script>
+<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="app/App.js"></script>
+<script src="app/routing/Routes.js"></script>
+<script src="app/controllers/MenuCtrl.js"></script>
+<script src="app/controllers/MainCtrl.js"></script>
+<script src="app/controllers/StartedCtrl.js"></script>
+<script src="app/directives/PieChart.js"></script>
+<script src="app/services/FormatCourses.js"></script>
+<script src="app/services/QueryCourses.js"></script>
+<script src="app/services/CourseRest.js"></script>
+<script src="app/services/UserRest.js"></script>
 </body>
 
 </html>

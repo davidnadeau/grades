@@ -1,23 +1,23 @@
 Grades.config( ['$routeProvider', function( $routeProvider ){
   $routeProvider
     .when( '/home', {
-      templateUrl: 'pages/home.html',
+      templateUrl: 'app/partials/home.html',
       controller: 'MainCtrl'
     })
     .when( '/register', {
-      templateUrl: 'pages/register.html',
+      templateUrl: 'app/partials/register.html',
       controller: 'MainCtrl'
     })
     .when( '/login', {
-      templateUrl: 'pages/login.html',
+      templateUrl: 'app/partials/login.html',
       controller: 'MainCtrl'
     })
     .when( '/details', {
-      templateUrl: 'pages/details.html',
+      templateUrl: 'app/partials/details.html',
       controller: 'MainCtrl'
     })
     .when( '/started', {
-      templateUrl: 'pages/started.html',
+      templateUrl: 'app/partials/started.html',
       controller: 'MainCtrl'
     })
     .otherwise( {redirectTo: '/home'} );
