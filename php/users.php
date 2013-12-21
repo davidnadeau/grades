@@ -11,10 +11,16 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		$query->execute(array(':name' => $user_name));
 
 		$result = $query->fetch();
-		if ($user_password == $result['password'])
-			$_SESSION['profile_id'] = $result['profile_id'];
-		else {
-			$result = false;
+
+		//if user is logged in, just return profile
+		//otherwise check if password is correct and log in
+		if (empty($user_data->loggedIn)) {
+			if ($user_password == $result['password']) {
+				$_SESSION['profile_id'] = $result['profile_id'];
+			}
+			else {
+				$result = false;
+			}
 		}
 		$json = json_encode($result);
 		echo $json;

@@ -1,13 +1,13 @@
 <div class="page-header">
-	<a href="#/login"    ng-hide="isLoggedIn()">Login</a>
-	<a href="#/register" ng-hide="isLoggedIn()">Register</a>
-	<a ng-show="isLoggedIn()"><i class="fa-lock"></i> {{user.name}}</a>
+	<a href="#/login"    ng-hide="status()">Login</a>
+	<a href="#/register" ng-hide="status()">Register</a>
+	<a ng-show="status()"><i class="fa-lock"></i> {{user.name}}</a>
 	<h1><i class="icon-bar-chart"></i>Brock Grade Visualizer!</h1>
 </div>
-<div class="main-content" ng-hide="isLoggedIn()">
+<div class="main-content" ng-hide="status()">
 	<p>please login or register.</p>
 </div>
-<div class="main-content" ng-show="isLoggedIn()">
+<div class="main-content" ng-show="status()">
 	<input type="text" ng-model="courseListInput"/>
 	<input type="button" ng-click="onSubmit()"/>
 	<li ng-repeat="course in courses">

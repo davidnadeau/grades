@@ -1,4 +1,4 @@
-Grades.controller('MenuCtrl', function ($scope, FormatCourses, LoggedIn) {
+Grades.controller('MenuCtrl', function ($scope, FormatCourses) {
 	$scope.menuLinks = [
 		{link:"home",text:"home"},
 		{link:"details",text:"Profile Details"},

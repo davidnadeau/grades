@@ -13,23 +13,9 @@ Grades.factory('Users', ['$resource', function($resource) {
 		} 
 	);
 }]);
-Grades.factory('LoggedIn', [function () {
-	var loggedIn = false;
-
-	return {
-		logIn: function() {
-			loggedIn = true;
-		},
-		logOut: function() {
-			loggedIn = false;
-		},
-		getLoggedIn: function() {
-			return loggedIn;
-		}
-	};
-}])
 Grades.factory('CurrentUser', [function () {
-	var user = {};
+	var user = {},
+		loggedIn = false;
 
 	return {
 		setUser: function(x) {
@@ -37,6 +23,15 @@ Grades.factory('CurrentUser', [function () {
 		},
 		getUser: function() {
 			return user;
+		},
+		logIn: function() {
+			loggedIn = true;
+		},
+		logOut: function() {
+			loggedIn = false;
+		},
+		isLoggedIn: function() {
+			return loggedIn;
 		}
 	};
 }])
