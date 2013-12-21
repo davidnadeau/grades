@@ -1,6 +1,7 @@
 <div class="page-header">
 	<a href="#/login"    ng-hide="status()">Login</a>
 	<a href="#/register" ng-hide="status()">Register</a>
+	<a href="#/details"	 ng-show="status()" ng-click="logout()">Logout</a>
 	<a ng-show="status()"><i class="fa-lock"></i> {{user.name}}</a>
 	<h1><i class="icon-bar-chart"></i>Brock Grade Visualizer!</h1>
 </div>

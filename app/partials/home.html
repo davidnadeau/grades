@@ -1,14 +1,13 @@
 <div class="page-header">
 	<a href="#/login"    ng-hide="status()">Login</a>
 	<a href="#/register" ng-hide="status()">Register</a>
+	<a href="#/home"	 ng-show="status()" ng-click="logout()">Logout</a>
 	<a ng-show="status()"><i class="fa-lock"></i> {{user.name}}</a>
 	<h1><i class="icon-bar-chart"></i>Brock Grade Visualizer!</h1>
 </div>
 <div class="main-content" ng-hide="status()">
-	<p>Cookie Value: {{cookie}}</p>
 	<p>please login or register.</p>
 </div>
 <div class="main-content" ng-show="status()">
-	<p>Cookie Value: {{cookie}}</p>
 	<p>Welcome {{user.name}} your major is {{user.major}}</p>
 </div>

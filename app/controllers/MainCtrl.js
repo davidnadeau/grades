@@ -1,7 +1,6 @@
 Grades.controller('MainCtrl', function ($scope, FormatCourses, QueryCourses, Users, CurrentUser, $rootScope, $cookieStore) {
 	$scope.user = CurrentUser.getUser();
-	$scope.cookie = $cookieStore.get('name');
-
+	
 	if (typeof $cookieStore.get('name') !== 'undefined') {
 		if (!CurrentUser.isLoggedIn()) {
 			var loginData = {
@@ -66,5 +65,10 @@ Grades.controller('MainCtrl', function ($scope, FormatCourses, QueryCourses, Use
 	};
 	$scope.status = function() {
 		return CurrentUser.isLoggedIn();
+	}
+	$scope.logout = function() {
+		CurrentUser.logOut();
+		CurrentUser.setUser = {};
+		$cookieStore.put('name',undefined);
 	}
 });
