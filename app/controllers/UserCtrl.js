@@ -1,4 +1,4 @@
-Grades.controller('MainCtrl', function ($scope, FormatCourses, QueryCourses, Users, CurrentUser, $rootScope, $cookieStore) {
+Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $rootScope, $cookieStore, $location) {
 	$scope.user = CurrentUser.getUser();
 	
 	if (typeof $cookieStore.get('name') !== 'undefined') {
@@ -20,12 +20,7 @@ Grades.controller('MainCtrl', function ($scope, FormatCourses, QueryCourses, Use
 			);
 		}
 	}
-
-	$scope.onSubmit = function() {
-		$scope.courses = FormatCourses.format($scope.courseListInput);
-		$rootScope.course = $scope.courses;
-		console.log(QueryCourses.courseDistribution($scope.courses));
-	};
+	
 	$scope.login = function() {
 		var loginData = {
 			'userName': $scope.userLogin.name, 
@@ -37,13 +32,16 @@ Grades.controller('MainCtrl', function ($scope, FormatCourses, QueryCourses, Use
 				userData: loginData
 			}, 
 			function(response) {
-				if (typeof response['name'] === 'undefined') 
+				if (typeof response['name'] === 'undefined') {
 					CurrentUser.logOut();
+					$location.path('#/home').replace();
+				}
 				else {
 					CurrentUser.setUser(response);
 					CurrentUser.logIn();
 					$scope.user = CurrentUser.getUser();
 					$cookieStore.put('name',$scope.user.name);
+					$location.path('#/home').replace();
 				}
 			}
 		);
@@ -59,7 +57,10 @@ Grades.controller('MainCtrl', function ($scope, FormatCourses, QueryCourses, Use
 				userData: registrationData
 			}, 
 			function(response) {
-				console.log(response);
+					CurrentUser.setUser(response);
+					CurrentUser.logIn();
+					$scope.user = CurrentUser.getUser();
+					$location.path('#/home').replace();
 			}
 		);
 	};

@@ -11,14 +11,31 @@
 	<p>please login or register.</p>
 </div>
 <div class="main-content" ng-show="status()">
-	<input type="text" ng-model="courseListInput"/>
-	<input type="button" ng-click="onSubmit()"/>
-	<li ng-repeat="course in courses">
-		{{course.major}}
-		{{course.name}}
-		{{course.mark}}
-		{{course.credit}}
-		{{course.weight}}
-	</li>
-	<pie-chart></pie-chart>
+	<div class="container" ng-controller='CourseCtrl'>
+		<div class="row">
+			<div class="col-12">
+				<h2>Course Details</h2>
+				<div class="col-4">search</div>
+				<div class="col-8">
+					<div class="col-4">
+						<i class="fa fa-plus-circle"></i> Course
+					</div>
+					<div class="col-8">
+						Bulk Insert:
+						<input type="text" ng-model="courseListInput"/>
+						<input type="button" ng-click="onSubmit()" value="Insert">
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<li ng-repeat="course in courses">
+					{{course.subject}}
+					{{course.number}}
+					{{course.mark}}
+					{{course.credit}}
+					{{course.weight}}
+				</li>
+			</div>
+		</div>
+	</div>
 </div>

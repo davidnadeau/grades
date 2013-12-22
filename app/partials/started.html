@@ -10,15 +10,4 @@
 <div class="main-content" ng-hide="status()">
 	<p>please login or register.</p>
 </div>
-<div class="main-content" ng-show="status()">
-	<div ng-controller="StartedCtrl">
-		<button ng-click="getCourses()">Get Courses</button>
-		<li ng-repeat="course in courses">
-			{{course.subject}}
-			{{course.number}}
-			{{course.mark}}
-			{{course.credit}}
-			{{course.weight}}
-		</li>
-	</div>
-</div>
+<div class="main-content" ng-show="status()"></div>

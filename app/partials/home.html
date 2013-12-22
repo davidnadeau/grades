@@ -10,6 +10,43 @@
 <div class="main-content" ng-hide="status()">
 	<p>please login or register.</p>
 </div>
-<div class="main-content" ng-show="status()">
-	<p>Welcome {{user.name}} your major is {{user.major}}</p>
+<div class="main-content with-3d-shadow with-transitions" ng-show="status()">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>User Dashboard</h2>
+				<div class="col-2">
+					<i class="fa fa-user" id="profile-icon"></i>
+				</div>
+				<div class="col-4">
+					<p>
+						User: {{user.name}} <br />
+						Major: {{user.major}} <br />
+					</p>
+				</div>
+				<div class="col-6"></div>
+			</div>
+			<br />
+			<div class="col-8">
+				<h3>Brock Summary</h3>
+				<div class="col-6">
+					Total Credits: <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Major Credits: <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Minor Credits: <br />
+				</div>
+				<div class="col-6">
+					Overall Average: <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Major Average: <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Minor Average: <br />
+				</div>
+			</div>
+			<div class="col-4">
+				<pie-chart></pie-chart>
+			</div>
+			<div class="col-12">
+				<h3>Course Trends</h3>
+				<stacked-chart></stacked-chart>
+			</div>
+		</div>
+	</div>
 </div>

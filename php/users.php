@@ -36,6 +36,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 		$query = $db->prepare("INSERT INTO `dn09uo`.`profiles` (`profile_id`, `name`, `major`, `password`) VALUES (NULL, :name, :major, :password);");
 		$query->execute(array(':name' => $user_name, ':major' => $user_major, ':password' => $user_password));
+		//return user
+		$query = $db->prepare("SELECT * FROM `profiles` WHERE `name`=:name");
+		$query->execute(array(':name' => $user_name));
+		$result = $query->fetch();
+		$json = json_encode($result);
+		echo $json;
 		break;
 }
 ?>

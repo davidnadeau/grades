@@ -1,64 +1,58 @@
-Grades.directive('pieChart', [function ($rootScope, QueryCourses) {
-    return {
-        restrict: 'E',
-        template:'<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
-        link: function (scope, iElement, iAttrs) {
-            // Radialize the colors
-            Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
-                return {
-                    radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
-                    stops: [
-                        [0, color],
-                        [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-                    ]
-                };
-            });
+Grades.directive('pieChart', function() {
+	return {
+    template:"<div id='pie' style='width:100%;'><svg height:50%/></div>",
+		restrict: 'E',
+		link: function(scope, element, attrs){
 
-            // Build the chart
-            $('#container').highcharts({
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
-                },
-                title: {
-                    text: 'Browser market shares at a specific website, 2010'
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            color: '#000000',
-                            connectorColor: '#000000',
-                            formatter: function() {
-                                return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    type: 'pie',
-                    name: 'Browser share',
-                    data: [
-                    ['Firefox',   45.0],
-                    ['IE',       26.8],
-                    {
-                        name: 'Chrome',
-                        y: 12.8,
-                        sliced: true,
-                        selected: true
-                    },
-                    ['Safari',    8.5],
-                    ['Opera',     6.2],
-                    ['Others',   0.7]
-                    ]
-                }]
-            });
-        }
-    };
-}])
+            var testdata = [
+            {
+              key: "One",
+              y: 5
+          },
+          {
+              key: "Two",
+              y: 2
+          },
+          {
+              key: "Three",
+              y: 9
+          },
+          {
+              key: "Four",
+              y: 7
+          },
+          {
+              key: "Five",
+              y: 4
+          },
+          {
+              key: "Six",
+              y: 3
+          },
+          {
+              key: "Seven",
+              y: .5
+          }
+          ];
+
+
+          nv.addGraph(function() {
+
+            var chart = nv.models.pieChart()
+              .x(function(d) { return d.key })
+              .y(function(d) { return d.y })
+              .color(d3.scale.category10().range())
+              .showLegend(false);
+
+            d3.select("#pie svg")
+              .datum(testdata)
+              .transition().duration(1200)
+              .call(chart);
+            
+            nv.utils.windowResize(chart.update);
+
+            return chart;
+        });
+      }
+  }
+});
