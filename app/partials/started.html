@@ -1,8 +1,10 @@
 <div class="page-header">
-	<a href="#/login"    ng-hide="status()"><i class="fa fa-sign-in"></i> Login</a>
-	<a href="#/register" ng-hide="status()"><i class="fa fa-lock"></i> Register</a>
-	<a href="#/home"	 ng-show="status()" ng-click="logout()"><i class="fa fa-sign-out"></i> Logout</a>
-	<a ng-show="status()"><i class="fa fa-user"></i> {{user.name}}</a>
+	<div class="links">
+		<a href="#/register" ng-hide="status()"><i class="fa fa-lock"></i> Register</a>
+		<a href="#/login"    ng-hide="status()"><i class="fa fa-sign-in"></i> Login</a>
+		<a ng-show="status()"><i class="fa fa-user"></i> {{user.name}}</a>
+		<a href="#/home"	 ng-show="status()" ng-click="logout()"><i class="fa fa-sign-out"></i> Logout</a>
+	</div>
 	<h1><i class="fa fa-cogs"></i> Brock Grade Visualizer!</h1>
 </div>
 <div class="main-content" ng-hide="status()">
