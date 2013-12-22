@@ -68,7 +68,7 @@ Grades.controller('MainCtrl', function ($scope, FormatCourses, QueryCourses, Use
 	}
 	$scope.logout = function() {
 		CurrentUser.logOut();
-		CurrentUser.setUser = {};
+		CurrentUser.setUser({});
 		$cookieStore.put('name',undefined);
 	}
 });
