@@ -25,8 +25,7 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 					var weight = c.weight*2;
 					forEach(courses, function(x) {
 						if (x.subject === c.subject) {
-							x.mark+=c.mark*weight;
-							x.count+=weight;
+							x.count++;
 						}
 					});
 				}
@@ -34,10 +33,8 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 			subjectInsert: function(c) {
 				if (isNumber(+c.mark)) {
 					var course = {};
-					var weight = c.weight*2;
 					course.subject = c.subject;
-					course.mark = c.mark*weight;
-					course.count = weight;
+					course.count = 1;
 					courses.push(course);
 				}
 			},
@@ -50,7 +47,7 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 					if (c.count>0) {
 						data.push({
 							key: c.subject,
-							value: c.mark/c.count
+							value: c.count
 						});
 					}
 				});
@@ -78,7 +75,7 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 			yearInsert: function(c) {
 				if (isNumber(+c.mark)) {
 					var year = {},
-					    weight = c.weight*2;
+						weight = c.weight*2;
 					year.date = c.year;
 					year.average = c.mark*weight;
 					year.count = weight;

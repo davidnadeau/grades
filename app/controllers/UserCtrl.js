@@ -32,7 +32,7 @@ Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $rootScope, 
 				userData: loginData
 			}, 
 			function(response) {
-				if (typeof response['name'] === 'undefined') {
+				if (typeof response.name === 'undefined') {
 					CurrentUser.logOut();
 					$location.path('#/home').replace();
 				}
@@ -66,10 +66,10 @@ Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $rootScope, 
 	};
 	$scope.status = function() {
 		return CurrentUser.isLoggedIn();
-	}
+	};
 	$scope.logout = function() {
 		CurrentUser.logOut();
 		CurrentUser.setUser({});
 		$cookieStore.put('name',undefined);
-	}
+	};
 });

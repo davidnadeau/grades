@@ -9,19 +9,20 @@ Grades.directive('stackedChart', function() {
       scope.$watch('data', function() {
         console.log(scope.data);
         var colors = d3.scale.category20();
-        var keyColor = function(d, i) {return colors(d.key)};
+        var keyColor = function(d, i) {return colors(d.key);};
 
         var chart;
         nv.addGraph(function() {
           chart = nv.models.stackedAreaChart()
           .useInteractiveGuideline(true)
-          .x(function(d) { return d[0] })
-          .y(function(d) { return d[1] })
+          .x(function(d) { return d[0]; })
+          .y(function(d) { return d[1]; })
           .color(keyColor)
-          .transitionDuration(300);
+          .transitionDuration(300)
+          .clipEdge(true);
 
           chart.xAxis
-          .tickFormat(function(d) { return d3.time.format('%x')(new Date(d)) });
+          .tickFormat(function(d) { return d3.time.format('%x')(new Date(d)); });
 
           chart.yAxis
           .tickFormat(d3.format(',.2f'));
@@ -35,7 +36,6 @@ Grades.directive('stackedChart', function() {
           return chart;
         });
       });
-
     }
-  }
+  };
 });

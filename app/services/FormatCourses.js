@@ -1,6 +1,6 @@
-Grades.factory('FormatCourses', [function () {
+Grades.factory('FormatCourses', function () {
 	function isCrosslisted(x) {
-		return x=='*'||x=='#'
+		return x=='*'||x=='#';
 	}
 	
 	return {
@@ -23,7 +23,7 @@ Grades.factory('FormatCourses', [function () {
 					columns.splice(0,1);
 
 				//fill course object with remaining columns
-				var course = new Object();
+				var course = {};
 				course.year   = columns[0].trim().split(" ")[0];
 				course.subject  = columns[0].trim().split(" ")[1];
 				course.number   = columns[0].trim().split(" ")[2];
@@ -37,8 +37,8 @@ Grades.factory('FormatCourses', [function () {
 				course.mark   =+columns[6].split(" ")[0];
 				//index 7 is for speciail codes, not using this
 				courseList.push(course);
-	    	});
-	    	return courseList;
+			});
+			return courseList;
 		}
 	};
-}])
+});

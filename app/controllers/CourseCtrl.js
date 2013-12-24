@@ -7,4 +7,8 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses) {
 		$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
 		$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
 	});
-})
+
+	$scope.onSubmit = function() {
+		
+	}
+});

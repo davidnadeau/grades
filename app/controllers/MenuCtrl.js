@@ -5,9 +5,9 @@ Grades.controller('MenuCtrl', function ($scope, FormatCourses) {
 		{link:"started",text:"Getting Started",icon:"question"}
 	];
 
- 	$scope.selectedIndex = 0;
+	$scope.selectedIndex = 0;
 
 	$scope.itemClicked = function ($index) {
 		$scope.selectedIndex = $index;
 	};
-})
+});

@@ -1,4 +1,4 @@
-Grades.factory('Users', ['$resource', function($resource) {
+Grades.factory('Users', function($resource) {
 	return $resource( '/~dn09uo/project/grades/php/users.php', 
 		{}, 
 		{ 
@@ -12,8 +12,8 @@ Grades.factory('Users', ['$resource', function($resource) {
 			}
 		} 
 	);
-}]);
-Grades.factory('CurrentUser', [function () {
+});
+Grades.factory('CurrentUser', function () {
 	var user = {},
 		loggedIn = false;
 
@@ -34,4 +34,4 @@ Grades.factory('CurrentUser', [function () {
 			return loggedIn;
 		}
 	};
-}])
+});
