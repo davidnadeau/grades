@@ -22,8 +22,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				$result = false;
 			}
 		}
-		$json = json_encode($result);
-		echo $json;
 		break;
 	case "POST":
 		// $_POST is empty when using angular resouce to send post(wtf),
@@ -40,8 +38,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		$query = $db->prepare("SELECT * FROM `profiles` WHERE `name`=:name");
 		$query->execute(array(':name' => $user_name));
 		$result = $query->fetch();
-		$json = json_encode($result);
-		echo $json;
 		break;
 }
+$json = json_encode($result);
+echo $json;
+return;
 ?>

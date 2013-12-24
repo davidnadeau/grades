@@ -12,6 +12,19 @@ if (isset($_SESSION['profile_id'])) {
 			$result = $query->fetchAll();
 			break;
 		case "POST":
+			$postdata = file_get_contents("php://input");
+			$bulk_data = json_decode($postdata)->bulkData;
+
+			$db->beginTransaction();
+			$query = $db->prepare("INSERT INTO `dn09uo`.`courses` (`id`, `subject`, `number`, `year`, `weight`, `mark`, `profile_id`, `credit`) VALUES (NULL, :subject, :number, :year, :weight, :mark, :profile_id, :credit);");
+
+			foreach($bulk_data as $row) {
+				if (!empty($row->mark)) {
+					$query->execute(array(':subject' => $row->subject, ':number' => $row->number, ':year' => $row->year,':weight' => $row->weight, ':mark' => $row->mark, ':profile_id' => $_SESSION['profile_id'], ':credit' => $row->credit));
+				}
+			}
+
+			$result = $db->commit();
 			break;
 		case "DELETE":
 			break;
@@ -21,23 +34,4 @@ if (isset($_SESSION['profile_id'])) {
 	echo $json;
 }
 return;
-/*if( $_POST )
-{
-	$db->beginTransaction();
-
-	$query = $db->prepare("INSERT INTO `dn09uo`.`courses` (`id`, `subject`, `number`, `year`, `weight`, `mark`, `profile_id`, `credit`) VALUES (NULL, :subject, :number, :year, :weight, :mark, :profile_id, :credit);");
-
-	foreach($valuesToInsert as $insertRow){
-
-// now loop through each inner array to match binded values
-		foreach ($insertRow as $column => value) {
-			$stmt->bindParam(":{$column}", value);
-			$stmt->execute();
-		}
-	}
-
-
-	$dbh->commit();
-	$query->execute(array(':name' => $profile_name, ':major' => $profile_major, ':password' => $profile_password));
-}*/
 ?>

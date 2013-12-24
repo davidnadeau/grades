@@ -31,7 +31,7 @@ Grades.factory('FormatCourses', function () {
 				//index 1 is section, once again too granular
 				//index 2 is type (UG), site considers everything an UG credit
 				course.weight =+columns[3];
-				course.credit = columns[4].trim();
+				course.credit = columns[4].trim() === 'Y'?1:0;
 				//index 5 is the halfway mark for full year courses.
 				//once again, who cares, disregard this col
 				course.mark   =+columns[6].split(" ")[0];
