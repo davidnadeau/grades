@@ -55,9 +55,6 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 			});
 		newCourseFormVisibile = false;
 	};
-	$scope.updateCourse = function(course) {
-
-	};
 	$scope.deleteCourse = function(course) {
 		Courses
 			.delete({

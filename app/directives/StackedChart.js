@@ -7,7 +7,6 @@ Grades.directive('stackedChart', function() {
     restrict: 'E',
     link: function(scope, element, attrs) {
       scope.$watch('data', function() {
-        console.log(scope.data);
         var colors = d3.scale.category20();
         var keyColor = function(d, i) {return colors(d.key);};
 

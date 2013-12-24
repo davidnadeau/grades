@@ -15,10 +15,9 @@
 		<div class="row">
 			<div class="col-12">
 				<h2>Course Details</h2>
-				<div class="col-4">Search: <input ng-model="query"></div>
 				<div class="col-8">
 					<div class="col-4">
-						<a ng-click="showNewCourseForm()"><i class="fa fa-plus-circle"></i> New Course</a>
+						<button ng-click="showNewCourseForm()"><i class="fa fa-plus-circle"></i> New Course</button>
 					</div>
 					<div class="col-8">
 						Bulk Insert:
@@ -26,6 +25,7 @@
 						<input type="button" ng-click="onSubmit()" value="Insert">
 					</div>
 				</div>
+				<div class="col-4">Search: <input ng-model="query"></div>
 				<div class="col-12" ng-show="isNewCourseFormVisible()">
 					<form ng-model="course">
 						Subject: <input type="text" ng-model="course.subject">
@@ -39,17 +39,28 @@
 				</div>
 			</div>
 			<div class="col-12">
-				<li ng-repeat="course in courses | orderBy:'subject' | filter:query">
-					{{course.subject}}
-					{{course.number}}
-					{{course.mark}}
-					{{course.credit}}
-					{{course.weight}}
-					{{course.year}}
-					<a ng-click="updateCourse(course)"><i class="fa fa-edit"></i> Update</a>
-					<a ng-click="deleteCourse(course)"><i class="fa fa-eraser"></i> Delete</a>
-				</li>
+				<table>
+					<tr>
+						<th>Subject</th>
+						<th>Number</th>
+						<th>Mark</th>
+						<th>Year</th>
+						<th>Credit Earned</th>
+						<th>Weight</th>
+						<th>Delete</th>
+					</tr>
+				<tr ng-repeat="course in courses | orderBy:['subject','number'] | filter:query">
+					<td>{{course.subject}}</td>
+					<td>{{course.number}}</td>
+					<td>{{course.mark}}</td>
+					<td>{{course.year}}</td>
+					<td>{{course.credit | creditFilter}}</td>
+					<td>{{course.weight}}</td>
+					<td><a href="#" ng-click="deleteCourse(course)"><i class="fa fa-eraser"></i></a></td>
+				</tr>
+				</table>
 			</div>
 		</div>
 	</div>
+	<br style="clear: both" />
 </div>
