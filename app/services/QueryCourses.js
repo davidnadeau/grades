@@ -1,45 +1,109 @@
-Grades.factory('QueryCourses', [function () {
+Grades.factory('QueryCourses', function (CurrentUser) {
+
 	var sumMarks = function(x) {
-    	return x.reduce(function(a, b) { return a.mark + b.mark; }, 0);
-  	};
-  	
-  	var Courses = function() {
-  		var subjects = [];
-  		return {
-  			exists: function(c) {
-  				var dup = false;
-  				forEach(subjects, function(m) {
-  					if (m.subject === c.subject)
-  						dup = true;
-  				});
-  				return dup;
-  			},
-  			update: function(c) {
-  				if (isNumber(c.mark)) {
-  					var weight = c.weight*2;
-	  				forEach(subjects, function(m) {
-	  					if (m.subject === c.subject) {
-	  						m.mark+=c.mark*weight;
-	  						m.count+=weight;
-	  					}
-	  				});
-	  			}
-  			},
-  			insert: function(c) {
-  				if (isNumber(c.mark)) {
-	  				var course = new Object();
-	  				var weight = c.weight*2;
+		var sum = 0;
+		forEach(x,function(c) {
+			sum+=+c.mark;
+		});
+		return sum;
+	};
+
+	var Courses = (function() {
+		var courses = [];
+
+		return {
+			subjectExists: function(c) {
+				var dup = false;
+				forEach(courses, function(x) {
+					if (x.subject === c.subject)
+						dup = true;
+				});
+				return dup;
+			},
+			subjectUpdate: function(c) {
+				if (isNumber(+c.mark)) {
+					var weight = c.weight*2;
+					forEach(courses, function(x) {
+						if (x.subject === c.subject) {
+							x.mark+=c.mark*weight;
+							x.count+=weight;
+						}
+					});
+				}
+			},
+			subjectInsert: function(c) {
+				if (isNumber(+c.mark)) {
+					var course = {};
+					var weight = c.weight*2;
 					course.subject = c.subject;
 					course.mark = c.mark*weight;
 					course.count = weight;
-					majors.push(course);
+					courses.push(course);
 				}
-  			},
-  			getCourses: function() {
-  				return majors;
-  			}
-  		}
-  	}
+			},
+			clear: function() {
+				courses.length = 0;
+			},
+			getCourseDistribution: function() {
+				var data = [];
+				forEach(courses, function(c) {
+					if (c.count>0) {
+						data.push({
+							key: c.subject,
+							value: c.mark/c.count
+						});
+					}
+				});
+				return data;
+			},
+			yearExists: function(c) {
+				var dup = false;
+				forEach(courses, function(x) {
+					if (x.date === c.year)
+						dup = true;
+				});
+				return dup;
+			},
+			yearUpdate: function(c) {
+				if (isNumber(+c.mark)) {
+					var weight = c.weight*2;
+					forEach(courses, function(x) {
+						if (x.date === c.year) {
+							x.average += c.mark*weight;
+							x.count+= weight;
+						}
+					});
+				}
+			},
+			yearInsert: function(c) {
+				if (isNumber(+c.mark)) {
+					var year = {},
+					    weight = c.weight*2;
+					year.date = c.year;
+					year.average = c.mark*weight;
+					year.count = weight;
+					courses.push(year);
+				}
+			},
+			getGradesByYear: function() {
+				var data = [];
+				var entries = [];
+				var entry;
+				forEach(courses, function(c) {
+					entry = new Array(2);
+					entry.length = 0;
+					entry[0] = new Date().setFullYear(c.date);
+					entry[1] = c.average/c.count;
+					entries.push(entry);
+				});
+				data.push({
+					key: "Overall Average",
+					values: entries
+				});
+				return data;
+			}
+		};
+	}());
 
 	return {
 		overalAverage: function(courses) {
@@ -48,26 +112,36 @@ Grades.factory('QueryCourses', [function () {
 		minorAverage: function(courses) {
 			var minorCourses = [];
 			forEach(courses, function(c) {
-				if (!c.subject === 'COSC') minorCourses.push(c);
+				if (c.subject !== CurrentUser.getUser().major) minorCourses.push(c);
 			});
-			return sumMarks(minorCourses)/minorCourses.length;
+			return sumMarks(minorCourses)/minorCourses.length || 0;
 		},
 		majorAverage: function(courses) {
 			var majorCourses = [];
 			forEach(courses, function(c) {
-				if (c.subject === 'COSC') majorCourses.push(c);
+				if (c.subject === CurrentUser.getUser().major) majorCourses.push(c);
 			});
-			return sumMarks(majorCourses)/majorCourses.length;
+			return sumMarks(majorCourses)/majorCourses.length || 0;
 		},
 		courseDistribution: function(courses) {
-			var coursesBySubject = new Courses();
+			Courses.clear();
 			forEach(courses, function(c) {
-				if (coursesBySubject.exists(c))
-					coursesBySubject.update(c);
+				if (Courses.subjectExists(c))
+					Courses.subjectUpdate(c);
 				else
-					coursesBySubject.insert(c);
+					Courses.subjectInsert(c);
 			});
-			return coursesBySubject.getCourses();
+			return Courses.getCourseDistribution();
+		},
+		gradesByYear: function(courses) {
+			Courses.clear();
+			forEach(courses, function(c) {
+				if (Courses.yearExists(c))
+					Courses.yearUpdate(c);
+				else
+					Courses.yearInsert(c);
+			});
+			return Courses.getGradesByYear();
 		}
-	}
-}])
+	};
+});

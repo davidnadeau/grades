@@ -11,7 +11,7 @@
 	<p>please login or register.</p>
 </div>
 <div class="main-content with-3d-shadow with-transitions" ng-show="status()">
-	<div class="container">
+	<div class="container" ng-controller="CourseCtrl">
 		<div class="row">
 			<div class="col-12">
 				<h2>User Dashboard</h2>
@@ -35,17 +35,17 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;Minor Credits: <br />
 				</div>
 				<div class="col-6">
-					Overall Average: <br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Major Average: <br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Minor Average: <br />
+					Overall Average: {{overallAverage}}<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Major Average: {{majorAverage}}<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Minor Average: {{minorAverage}}<br />
 				</div>
 			</div>
 			<div class="col-4">
-				<pie-chart></pie-chart>
+				<pie-chart data="courseDistribution"></pie-chart>
 			</div>
 			<div class="col-12">
-				<h3>Course Trends</h3>
-				<stacked-chart></stacked-chart>
+				<h3>Grade Trends</h3>
+				<stacked-chart data="gradesByYear"></stacked-chart>
 			</div>
 		</div>
 	</div>
