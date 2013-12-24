@@ -30,14 +30,14 @@
 			<div class="col-8">
 				<h3>Brock Summary</h3>
 				<div class="col-6">
-					Total Credits: <br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Major Credits: <br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Minor Credits: <br />
+					Total Credits: {{totalCredits | number:1}}<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Major Credits: {{majorCredits | number:1}}<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Minor Credits: {{minorCredits | number:1}}<br />
 				</div>
 				<div class="col-6">
-					Overall Average: {{overallAverage}}<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Major Average: {{majorAverage}}<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Minor Average: {{minorAverage}}<br />
+					Overall Average: {{overallAverage | number:2}}<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Major Average: {{majorAverage | number:2}}<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;Minor Average: {{minorAverage | number:2}}<br />
 				</div>
 			</div>
 			<div class="col-4">

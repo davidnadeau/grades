@@ -5,6 +5,9 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 		$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
 		$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
 		$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+		$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+		$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+		$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
 
 		$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
 		$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
@@ -12,6 +15,7 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 
 	$scope.onSubmit = function() {
 		var courses = FormatCourses.format($scope.courseListInput);
+		console.log(courses);
 		Courses
 			.insert({
 				bulkData: courses
@@ -21,6 +25,9 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 					$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
 					$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
 					$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+					$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+					$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+					$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
 
 					$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
 					$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
@@ -52,6 +59,9 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 					$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
 					$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
 					$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+					$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+					$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+					$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
 
 					$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
 					$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
@@ -69,6 +79,9 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 					$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
 					$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
 					$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+					$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+					$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+					$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
 
 					$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
 					$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);

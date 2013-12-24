@@ -47,10 +47,11 @@ Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $rootScope, 
 		);
 	};
 	$scope.register = function() {
+		var major = $scope.userRegistration.major.toUpperCase();
 		var registrationData = {
 			'userName': $scope.userRegistration.name, 
 			'userPassword':$scope.userRegistration.password,
-			'userMajor':$scope.userRegistration.major
+			'userMajor':major
 		};
 		Users
 			.register({

@@ -228,6 +228,7 @@ a:hover {
 }
 
 #NewCourseForm {
+  margin-top:5px;
   background-color: #fefefe;
   padding: 15px;
   border-radius: 0px 0px 4px 4px;
@@ -243,8 +244,12 @@ a:hover {
   width:90%;
 }
 #NewCourseForm button[type="button"] {
-  margin-top:15px;
+  margin-top:10px;
   width:90%;
+}
+#NewCourseForm button[type="button"] i{
+  float:left;
+  line-height: 20px;
 }
 /** 12 column grid layout. (1/12)% width for each column */
 .container .row .col-1  {float:left;width:8.333333333333332%}

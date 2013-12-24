@@ -104,7 +104,7 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 
 	return {
 		overalAverage: function(courses) {
-			return sumMarks(courses)/courses.length;
+			return sumMarks(courses)/courses.length || 0;
 		},
 		minorAverage: function(courses) {
 			var minorCourses = [];
@@ -139,6 +139,29 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 					Courses.yearInsert(c);
 			});
 			return Courses.getGradesByYear();
+		},
+		totalCredits: function(courses) {
+			var count = 0;
+			forEach(courses, function(c) {
+				count+=+c.credit*+c.weight;
+			});
+			return count;
+		},
+		majorCredits: function(courses) {
+			var count = 0;
+			forEach(courses, function(c) {
+				if (c.subject === CurrentUser.getUser().major)
+					count+= +c.credit*+c.weight;
+			});
+			return count;
+		},
+		minorCredits: function(courses) {
+			var count = 0;
+			forEach(courses, function(c) {
+				if (c.subject !== CurrentUser.getUser().major)
+					count+=+c.credit*+c.weight;
+			});
+			return count;
 		}
 	};
 });
