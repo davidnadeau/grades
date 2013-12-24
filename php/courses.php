@@ -24,9 +24,11 @@ if (isset($_SESSION['profile_id'])) {
 				}
 			}
 
-			$result = $db->commit();
+			$db->commit();
 			break;
 		case "DELETE":
+			$postdata = file_get_contents("php://input");
+			$result = json_decode($postdata);
 			break;
 
 	}
