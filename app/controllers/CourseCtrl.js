@@ -19,6 +19,7 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
         			console.log(response);
         		}
         	);
+        //refresh courses
         $scope.courses = Courses.query({},function() {
 			$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
 			$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
