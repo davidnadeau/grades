@@ -103,7 +103,7 @@
 						<td>{{course.mark}}</td>
 						<td>{{course.year}}</td>
 						<td>{{course.credit | creditFilter}}</td>
-						<td>{{course.weight}}</td>
+						<td>{{course.weight | number:1}}</td>
 						<td><a href="#" ng-click="deleteCourse(course)"><i class="fa fa-eraser"></i></a></td>
 					</tr>
 				</table>
