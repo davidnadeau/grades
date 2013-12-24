@@ -1,13 +1,14 @@
-Grades.controller('MenuCtrl', function ($scope, FormatCourses) {
+Grades.controller('MenuCtrl', function ($scope) {
+
 	$scope.menuLinks = [
-		{link:"home",text:"Home",icon:"home"},
+		{link:"home",text:"Dashboard",icon:"home"},
 		{link:"details",text:"Profile Details",icon:"info"},
 		{link:"started",text:"Getting Started",icon:"question"}
 	];
 
 	$scope.selectedIndex = 0;
 
-	$scope.itemClicked = function ($index) {
-		$scope.selectedIndex = $index;
+	$scope.itemClicked = function (index) {
+		$scope.selectedIndex = index;
 	};
 });
