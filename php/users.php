@@ -38,6 +38,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		$query = $db->prepare("SELECT * FROM `profiles` WHERE `name`=:name");
 		$query->execute(array(':name' => $user_name));
 		$result = $query->fetch();
+		$_SESSION['profile_id'] = $result['profile_id'];
 		break;
 }
 $json = json_encode($result);
