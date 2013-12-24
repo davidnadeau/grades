@@ -25,8 +25,8 @@ Grades.factory('FormatCourses', function () {
 				//fill course object with remaining columns
 				var course = {};
 				course.year   = columns[0].trim().split(" ")[0];
-				course.subject  = columns[0].trim().split(" ")[1];
-				course.number   = columns[0].trim().split(" ")[2];
+				course.subject  = columns[0].trim().split(" ")[1].toUpperCase();
+				course.number   = columns[0].trim().split(" ")[2].toUpperCase();
 				//index [0][3] is duration, too granular, site deals with years
 				//index 1 is section, once again too granular
 				//index 2 is type (UG), site considers everything an UG credit

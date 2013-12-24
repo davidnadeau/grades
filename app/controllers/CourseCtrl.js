@@ -12,8 +12,8 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 
 	$scope.onSubmit = function() {
 		var courses = FormatCourses.format($scope.courseListInput);
-		Courses.
-			insert({
+		Courses
+			.insert({
 				bulkData: courses
 			}, function(response) {
 				//refresh courses
@@ -35,10 +35,12 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 	};
 	$scope.addNewCourse = function() {
 		var courseData = [];
+		$scope.course.subject = $scope.course.subject.toUpperCase();
+		$scope.course.number = $scope.course.number.toUpperCase();
 		courseData.push($scope.course);
 
-		Courses.
-			insert({
+		Courses
+			.insert({
 				bulkData: courseData
 			}, function(response) {
 				//refresh courses
@@ -57,6 +59,19 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 
 	};
 	$scope.deleteCourse = function(course) {
-		Courses.delete({courseId: course.id});
+		Courses
+			.delete({
+				id: course.id
+			}, function(response) {
+				//refresh courses
+				$scope.courses = Courses.query({},function() {
+					$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
+					$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
+					$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+
+					$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
+					$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
+				});
+			});
 	};
 });

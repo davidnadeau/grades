@@ -5,7 +5,8 @@ Grades.factory('Courses', function($resource) {
 			insert: {
 				method: 'POST',
 				data:{bulkData:"@bulkData"}
-			}
+			},
+			delete: { method: 'POST' }
 		}
 	);
 });
