@@ -30,6 +30,10 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 	$scope.showNewCourseForm = function() {
 		newCourseFormVisibile = true;
 	};
+	$scope.hideNewCourseForm = function() {
+		newCourseFormVisibile = false;
+		$scope.course = {};
+	};
 	$scope.isNewCourseFormVisible = function() {
 		return newCourseFormVisibile;
 	};

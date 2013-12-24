@@ -218,6 +218,99 @@ a {
 	padding: 40px;
 }
 
+#NewCourseForm {
+  background-color: #fefefe;
+  padding: 15px;
+  border-radius: 0px 0px 4px 4px;
+  -webkit-box-shadow: inset 2px 0px 2px 0px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 2px 0px 2px 0px rgba(255, 255, 255, 0.5);
+
+}
+#NewCourseForm span {
+  color:#1234567;
+  width:80%;
+}
+#NewCourseForm input[type="text"] {
+  width:90%;
+}
+#NewCourseForm #submit {
+  margin-top:10px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+  box-shadow:inset 0px 1px 0px 0px #caefab;
+  background-color:#77d42a;
+  -webkit-border-top-left-radius:0px;
+  -moz-border-radius-topleft:0px;
+  border-top-left-radius:0px;
+  -webkit-border-top-right-radius:0px;
+  -moz-border-radius-topright:0px;
+  border-top-right-radius:0px;
+  -webkit-border-bottom-right-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  border-bottom-right-radius:0px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomleft:0px;
+  border-bottom-left-radius:0px;
+  text-indent:0;
+  border:1px solid #268a16;
+  display:inline-block;
+  color:#000;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  font-style:normal;
+  height:30px;
+  line-height:25px;
+  width:90%;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #aade7c;
+}#NewCourseForm #submit:hover {
+  background-color:#5cb811;
+}#NewCourseForm #submit:active {
+  position:relative;
+  top:1px;
+}
+#NewCourseForm #cancel{
+  margin-top:10px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+  box-shadow:inset 0px 1px 0px 0px #caefab;
+  background-color:#ff0000;
+  -webkit-border-top-left-radius:0px;
+  -moz-border-radius-topleft:0px;
+  border-top-left-radius:0px;
+  -webkit-border-top-right-radius:0px;
+  -moz-border-radius-topright:0px;
+  border-top-right-radius:0px;
+  -webkit-border-bottom-right-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  border-bottom-right-radius:0px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomleft:0px;
+  border-bottom-left-radius:0px;
+  text-indent:0;
+  border:1px solid #268a16;
+  display:inline-block;
+  color:#000;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  font-style:normal;
+  height:30px;
+  line-height:25px;
+  width:90%;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #aade7c;
+}
+#NewCourseForm #cancel:hover {
+  background-color:#ff3333;
+}
+#NewCourseForm #cancel:active {
+  position:relative;
+  top:1px;
+}
 /** 12 column grid layout. (1/12)% width for each column */
 .container .row .col-1  {float:left;width:8.333333333333332%}
 .container .row .col-2  {float:left;width:16.666666666666664%}

@@ -27,14 +27,62 @@
 				</div>
 				<div class="col-4">Search: <input ng-model="query"></div>
 				<div class="col-12" ng-show="isNewCourseFormVisible()">
-					<form ng-model="course">
-						Subject: <input type="text" ng-model="course.subject">
-						Number: <input type="text" ng-model="course.number">
-						Year: <input type="text" ng-model="course.year">
-						Weight: <input type="text" ng-model="course.weight">
-						Mark: <input type="text" ng-model="course.mark">
-						Credit: <input type="text" ng-model="course.credit">
-						<input type="button" value="Add Course" ng-click="addNewCourse()">
+					<form ng-model="course" id="NewCourseForm">
+						<div class="col-6">
+							<div class="col-4">
+								<span>Subject: </span>
+							</div>
+							<div class="col-8">
+								<input type="text" ng-model="course.subject">
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="col-4">
+								<span>Number: </span>
+							</div>
+							<div class="col-8">
+								<input type="text" ng-model="course.number">
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="col-4">
+								<span>Year: </span>
+							</div>
+							<div class="col-8">
+								<input type="text" ng-model="course.year">
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="col-4">
+								<span>Weight: </span>
+							</div>
+							<div class="col-8">
+								<input type="text" ng-model="course.weight">
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="col-4">
+								<span>Mark: </span>
+							</div>
+							<div class="col-8">
+								<input type="text" ng-model="course.mark">
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="col-4">
+								<span>Credit: </span>
+							</div>
+							<div class="col-8">
+								<input type="text" ng-model="course.credit">
+							</div>
+						</div>
+						<div class="col-3">
+							<input id="cancel" type="button" value="Cancel" ng-click="hideNewCourseForm()">
+						</div>
+						<div class="col-3 offset-6">
+							<input id="submit" type="button" value="Add Course" ng-click="addNewCourse()">
+						</div>
+						<br style="clear: both" />
 					</form>
 				</div>
 			</div>
@@ -49,15 +97,15 @@
 						<th>Weight</th>
 						<th>Delete</th>
 					</tr>
-				<tr ng-repeat="course in courses | orderBy:['subject','number'] | filter:query">
-					<td>{{course.subject}}</td>
-					<td>{{course.number}}</td>
-					<td>{{course.mark}}</td>
-					<td>{{course.year}}</td>
-					<td>{{course.credit | creditFilter}}</td>
-					<td>{{course.weight}}</td>
-					<td><a href="#" ng-click="deleteCourse(course)"><i class="fa fa-eraser"></i></a></td>
-				</tr>
+					<tr ng-repeat="course in courses | orderBy:['subject','number'] | filter:query">
+						<td>{{course.subject}}</td>
+						<td>{{course.number}}</td>
+						<td>{{course.mark}}</td>
+						<td>{{course.year}}</td>
+						<td>{{course.credit | creditFilter}}</td>
+						<td>{{course.weight}}</td>
+						<td><a href="#" ng-click="deleteCourse(course)"><i class="fa fa-eraser"></i></a></td>
+					</tr>
 				</table>
 			</div>
 		</div>
