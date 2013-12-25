@@ -1,12 +1,17 @@
 #!/usr/local/bin/php 
 <?php
 include("connection.php");
+//import hashing algorithm *bcrypt
+require('./PasswordHash.php');
+//bcrypt hashing algorithm
+$hasher = new PasswordHash(8,FALSE);
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	case "GET":
 		$user_data = json_decode($_GET['userData']);
 		$user_name = $user_data->userName;
 		$user_password = $user_data->userPassword;
+		
 		$query = $db->prepare("SELECT * FROM `profiles` WHERE `name`=:name");
 		$query->execute(array(':name' => $user_name));
 
@@ -15,7 +20,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		//if user is logged in, just return profile
 		//otherwise check if password is correct and log in
 		if (empty($user_data->loggedIn)) {
-			if ($user_password == $result['password']) {
+			if ($hasher->CheckPassword($user_password, $result['password'])) {
 				$_SESSION['profile_id'] = $result['profile_id'];
 			}
 			else {
@@ -32,8 +37,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		$user_password = $user_data->userPassword;
 		$user_major = $user_data->userMajor;
 
+		//bcrypt algorithm for hashing
+    	$hash = $hasher->HashPassword($user_password);
+    	
 		$query = $db->prepare("INSERT INTO `dn09uo`.`profiles` (`profile_id`, `name`, `major`, `password`) VALUES (NULL, :name, :major, :password);");
-		$query->execute(array(':name' => $user_name, ':major' => $user_major, ':password' => $user_password));
+		$query->execute(array(':name' => $user_name, ':major' => $user_major, ':password' => $hash));
 		//return user
 		$query = $db->prepare("SELECT * FROM `profiles` WHERE `name`=:name");
 		$query->execute(array(':name' => $user_name));
