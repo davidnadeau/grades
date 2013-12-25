@@ -216,9 +216,11 @@ a:hover {
   font-size: 9em;
 }
 .content .main-content h2 {
+  font-family: "Oswald", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-bottom: 2px solid #ddd;
 }
 .content .main-content h3 {
+  font-family: "Oswald", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-bottom: 1px solid #ddd;
 }
 /** fluid grid layout */
@@ -250,6 +252,21 @@ a:hover {
 #NewCourseForm button[type="button"] i{
   float:left;
   line-height: 20px;
+}
+
+.userdetails {
+  background-color: #ede6c2;
+  border-color: #d6b573;
+  color: #89724d;
+  -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 2px 0px #fff;
+  box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 2px 0px #fff;
+  border-top: 1px solid #caa14c;
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.userdetails .numbers{
+  font-size:22px;
 }
 /** 12 column grid layout. (1/12)% width for each column */
 .container .row .col-1  {float:left;width:8.333333333333332%}

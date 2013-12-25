@@ -3,7 +3,7 @@ Grades.directive('pieChart', function() {
         scope: {
           data: '='
       },
-      template:"<div id='pie' style='height:350px;width:350px; margin-left:-50px;'><svg height:100%/></div>",
+      template:"<div id='pie' style='height:350px;width:350px;'><svg height:100%/></div>",
       restrict: 'E',
       link: function(scope, element, attrs){
           scope.$watch('data', function() {

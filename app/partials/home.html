@@ -18,29 +18,34 @@
 				<div class="col-2">
 					<i class="fa fa-user" id="profile-icon"></i>
 				</div>
-				<div class="col-4">
+				<div class="col-4 userdetails">
 					<p>
 						User: {{user.name}} <br />
 						Major: {{user.major}} <br />
 					</p>
+					<br /><br />
 				</div>
 				<div class="col-6"></div>
 			</div>
 			<br />
-			<div class="col-8">
+			<div class="col-7">
 				<h3>Brock Summary</h3>
-				<div class="col-6">
-					Total Credits: {{totalCredits | number:1}}<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Major Credits: {{majorCredits | number:1}}<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Minor Credits: {{minorCredits | number:1}}<br />
+				<div class="col-6 userdetails">
+					<h3>Credits</h3>
+					<br /><br /><br /><br /><br /><br />
+					<div class="numbers">
+					<div class="col-4">{{totalCredits | number:1}}</div><div class="col-4">{{majorCredits | number:1}}</div><div class="col-4">{{minorCredits | number:1}}</div></div><br />
+				    <div class="col-4">Overall</div><div class="col-4">Major</div><div class="col-4">Minor</div><br />
 				</div>
-				<div class="col-6">
-					Overall Average: {{overallAverage | number:2}}<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Major Average: {{majorAverage | number:2}}<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;Minor Average: {{minorAverage | number:2}}<br />
+				<div class="col-6 userdetails">
+					<h3>Average</h3>
+					<br /><br /><br /><br /><br /><br />
+					<div class="numbers">
+					<div class="col-4">{{overallAverage | number:2}}</div><div class="col-4">{{majorAverage | number:2}}</div><div class="col-4">{{minorAverage | number:2}}</div></div><br />
+				    <div class="col-4">Overall</div><div class="col-4">Major</div><div class="col-4">Minor</div><br />
 				</div>
 			</div>
-			<div class="col-4">
+			<div class="col-5">
 				<pie-chart data="courseDistribution"></pie-chart>
 			</div>
 			<div class="col-12">
