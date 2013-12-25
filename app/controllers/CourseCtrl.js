@@ -68,6 +68,7 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 				});
 			});
 		newCourseFormVisibile = false;
+		$scope.course = {};
 	};
 	$scope.deleteCourse = function(course) {
 		Courses
