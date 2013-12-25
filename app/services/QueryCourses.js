@@ -82,8 +82,7 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 					courses.push(year);
 				}
 			},
-			getGradesByYear: function() {
-				var data = [];
+			getGradesByYear: function(val) {
 				var entries = [];
 				var entry;
 				forEach(courses, function(c) {
@@ -93,15 +92,17 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 					entry[1] = c.average/c.count;
 					entries.push(entry);
 				});
-				data.push({
-					key: "Overall Average",
+				return {
+					key: val,
 					values: entries
-				});
-				return data;
+				};
 			}
 		};
 	}());
 
+	function getRandomArbitary (min, max) {
+	    return Math.random() * (max - min) + min;
+	}
 	return {
 		overalAverage: function(courses) {
 			return sumMarks(courses)/courses.length || 0;
@@ -132,13 +133,24 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 		},
 		gradesByYear: function(courses) {
 			Courses.clear();
+			var data = [];
 			forEach(courses, function(c) {
 				if (Courses.yearExists(c))
 					Courses.yearUpdate(c);
 				else
 					Courses.yearInsert(c);
 			});
-			return Courses.getGradesByYear();
+			data.push(Courses.getGradesByYear("Overall Average"));
+			var fake = Courses.getGradesByYear("Minor Average");
+			for (var i=0;i<fake.values.length;i++)
+				fake.values[i][1] = fake.values[i][1]*getRandomArbitary(0.7,1.2);
+			data.push(fake);
+			var faker = Courses.getGradesByYear("Major Average");
+			for (var i=0;i<faker.values.length;i++)
+				faker.values[i][1] = faker.values[i][1]*getRandomArbitary(0.8,1.2);
+			data.push(faker);
+
+			return data;
 		},
 		totalCredits: function(courses) {
 			var count = 0;

@@ -21,13 +21,13 @@ Grades.directive('stackedChart', function() {
           .clipEdge(true);
 
           chart.xAxis
-          .tickFormat(function(d) { return d3.time.format('%x')(new Date(d)); });
+          .tickFormat(function(d) { return d3.time.format('%b-%y')(new Date(d)); });
 
           chart.yAxis
           .tickFormat(d3.format(',.2f'));
 
           d3.select('#stacked svg')
-          .datum(scope.data||[{key:"No Data",values:[[0,0]]}])
+          .datum(scope.data || [{key:"No Data",values:[[0,0]]}])
           .transition().duration(0)
           .call(chart);
 
