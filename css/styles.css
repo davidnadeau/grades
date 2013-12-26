@@ -257,7 +257,7 @@ a:hover {
 .userdetails {
   background-color: #ede6c2;
   border-color: #d6b573;
-  color: #89724d;
+  color: #c4ab84;
   -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 2px 0px #fff;
   box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 2px 0px #fff;
   border-top: 1px solid #caa14c;
@@ -265,8 +265,21 @@ a:hover {
   border: 1px solid transparent;
   border-radius: 4px;
 }
+.userdetails:hover {
+  color: #89724d;
+}
 .userdetails .numbers{
   font-size:22px;
+}
+.userdetails i {
+  color:#e2d2b9;
+  font-size:9em;
+  width:100%;
+  text-align:center;
+  margin-left:auto;margin-right:auto;
+}
+.userdetails:hover i {
+  color:#e2ccaa;
 }
 /** 12 column grid layout. (1/12)% width for each column */
 .container .row .col-1  {float:left;width:8.333333333333332%}
