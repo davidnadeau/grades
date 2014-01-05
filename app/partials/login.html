@@ -1,3 +1,9 @@
+<!-- 
+@author		David Nadeau
+@page		login.html
+@purpose	allow user to login to site
+-->
+
 <div class="page-header">
 	<div class="links">
 		<a href="#/register" ng-hide="status()"><i class="fa fa-lock"></i> Register</a>
@@ -8,13 +14,13 @@
 	<h1><i class="fa fa-cogs"></i> Brock Grade Visualizer!</h1>
 </div>
 <div class="main-content" ng-hide="status()">
-	<form ng-model="userLogin">
+	<form name="form" ng-model="userLogin" class="form-group" novalidate>
 		<p>Profile Name:
-		<input type="text" ng-model="userLogin.name"/></p>
+		<input type="text" ng-model="userLogin.name" class="form-control" required/></p>
 		<p>Profile Password:
-		<input type="text" ng-model="userLogin.password"/></p>
+		<input type="text" ng-model="userLogin.password" class="form-control" required/></p>
 		<p>
-		<input type='submit' value='Login' ng-click="login()"/> </p> 
+		<button class="btn btn-success" type="button" ng-click="login()" ng-disabled="form.$invalid">Login</button>
 	</form>
 </div>
 <div class="main-content" ng-show="status()">

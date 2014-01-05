@@ -1,3 +1,9 @@
+<!-- 
+@author		David Nadeau
+@page		register.html
+@purpose	all user to register a new account
+-->
+
 <div class="page-header">
 	<div class="links">
 		<a href="#/register" ng-hide="status()"><i class="fa fa-lock"></i> Register</a>
@@ -8,15 +14,15 @@
 	<h1><i class="fa fa-cogs"></i> Brock Grade Visualizer!</h1>
 </div>
 <div class="main-content" ng-hide="status()">
-	<form ng-model="userRegistration">
+	<form name="form" ng-model="userRegistration" class="form-group" novalidate>
 		<p>Profile Name:
-		<input type="text" ng-model="userRegistration.name"/></p>
+		<input type="text" ng-model="userRegistration.name" class="form-control" required/></p>
 		<p>Profile Major:
-		<input type="text" ng-model="userRegistration.major"/></p>
+		<input type="text" ng-model="userRegistration.major" class="form-control" required/></p>
 		<p>Profile Password:
-		<input type="text" ng-model="userRegistration.password"/></p>
+		<input type="text" ng-model="userRegistration.password" class="form-control" required/></p>
 		<p>
-		<input type='submit' value='Register' ng-click="register()"/> </p> 
+		<button class="btn btn-success" type="button" ng-click="register()" ng-disabled="form.$invalid">Login</button>
 	</form>
 </div>
 <div class="main-content" ng-show="status()">
