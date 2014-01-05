@@ -1,10 +1,10 @@
+<?php
 /*
 @author		David Nadeau
 @page		connection.php
 @purpose	Create a connection to the database and start a session 
 */
 
-<?php
 $SERVER   = "localhost";
 $USERNAME = "dn09uo";
 $PASSWORD = "8Ns6qADAvuPr8sss";

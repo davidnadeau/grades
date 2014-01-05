@@ -1,11 +1,11 @@
+#!/usr/local/bin/php
+<?php
 /*
 @author		David Nadeau
 @page		courses.php
 @purpose	REST api for courses
 */
 
-#!/usr/local/bin/php
-<?php
 include("connection.php");
 
 if (isset($_SESSION['profile_id'])) {

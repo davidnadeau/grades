@@ -1,11 +1,11 @@
+#!/usr/local/bin/php 
+<?php
 /*
 @author		David Nadeau
 @page		users.php
 @purpose	REST api for users 
 */
 
-#!/usr/local/bin/php 
-<?php
 include("connection.php");
 //import hashing algorithm *bcrypt
 require('./PasswordHash.php');
