@@ -1,3 +1,9 @@
+/*
+@author		David Nadeau
+@page		users.php
+@purpose	REST api for users 
+*/
+
 #!/usr/local/bin/php 
 <?php
 include("connection.php");
@@ -29,8 +35,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		}
 		break;
 	case "POST":
-		// $_POST is empty when using angular resouce to send post(wtf),
-		// this nasty hack is the only way to see the data....
+		// $_POST is empty when using angular resouce to send post,
+		// this hack is the only way to see the data
 		$postdata = file_get_contents("php://input");
 		$user_data = json_decode($postdata)->userData;
 		$user_name = $user_data->userName;

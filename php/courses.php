@@ -1,3 +1,9 @@
+/*
+@author		David Nadeau
+@page		courses.php
+@purpose	REST api for courses
+*/
+
 #!/usr/local/bin/php
 <?php
 include("connection.php");

@@ -1,3 +1,9 @@
+/* 
+@author   David Nadeau
+@page     styles.css
+@purpose  styles for website, including tables/layouts/forms/sidebar
+*/
+
 body {
   background-image: url(../images/body-linen.jpg);
   background-repeat: repeat;
