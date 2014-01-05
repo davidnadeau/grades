@@ -15,7 +15,6 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 
 	$scope.onSubmit = function() {
 		var courses = FormatCourses.format($scope.courseListInput);
-		console.log(courses);
 		Courses
 			.insert({
 				bulkData: courses
@@ -33,6 +32,7 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 					$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
 				});
 			});
+		$scope.courseListInput = "";
 	};
 	$scope.showNewCourseForm = function() {
 		newCourseFormVisibile = true;
