@@ -1,3 +1,9 @@
+/*
+@author		David Nadeau
+@page		App.js
+@purpose	Main js file
+*/
+
 //global angular project variable
 var Grades = angular.module( 'Grades', [ 'ngRoute','ngResource','ngCookies','ngAnimate'] );
 // perform action function on each element of the array

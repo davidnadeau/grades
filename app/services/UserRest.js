@@ -1,3 +1,9 @@
+/*
+@author		David Nadeau
+@page		UserRest.js
+@purpose	Front end REST calls to php REST api for users
+*/
+
 Grades.factory('Users', function($resource) {
 	return $resource( '/~dn09uo/project/grades/php/users.php', 
 		{}, 
@@ -13,6 +19,11 @@ Grades.factory('Users', function($resource) {
 		} 
 	);
 });
+
+/*
+@purpose	Store user state
+*/
+
 Grades.factory('CurrentUser', function () {
 	var user = {},
 		loggedIn = false;

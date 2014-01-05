@@ -1,3 +1,9 @@
+/*
+@author		David Nadeau
+@page		CourseCtrl.js
+@purpose	Handle all calls to db/forms dealing with courses
+*/
+
 Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatCourses) {
 	var newCourseFormVisibile = false;
 

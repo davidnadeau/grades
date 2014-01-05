@@ -1,3 +1,9 @@
+/*
+@author		David Nadeau
+@page		QueryCourses.js
+@purpose	Gather statistics on user courses
+*/
+
 Grades.factory('QueryCourses', function (CurrentUser) {
 
 	var sumMarks = function(x) {

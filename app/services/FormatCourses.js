@@ -1,3 +1,10 @@
+/*
+@author		David Nadeau
+@page		FormatCourses.js
+@purpose	Used for bulk inserting courses. Take the tab seperated list from
+			the input box and return an easy to use course list array
+*/
+
 Grades.factory('FormatCourses', function () {
 	function isCrosslisted(x) {
 		return x=='*'||x=='#';

@@ -1,3 +1,9 @@
+/*
+@author		David Nadeau
+@page		UserCtrl.js
+@purpose	Handle all calls to db/forms dealing with user profiles
+*/
+
 Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $rootScope, $cookieStore, $location) {
 	$scope.user = CurrentUser.getUser();
 	
