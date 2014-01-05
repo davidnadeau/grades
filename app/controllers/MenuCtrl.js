@@ -8,7 +8,7 @@ Grades.controller('MenuCtrl', function($scope) {
 
 	$scope.menuLinks = [
 		{link:"home",text:"Dashboard",icon:"home"},
-		{link:"details",text:"Profile Details",icon:"info"},
+		{link:"details",text:"Course Details",icon:"info"},
 		{link:"started",text:"Getting Started",icon:"question"}
 	];
 
