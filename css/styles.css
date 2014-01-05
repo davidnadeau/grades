@@ -235,12 +235,15 @@ a:hover {
 
 /* STYLE COURSE ADDITION FORM */
 #NewCourseForm {
-  background-color: #fefefe;
+  background-color: #ede6c2;
+  border-color: #d6b573;
+  color: #89724d;
+  -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 2px 0px #fff;
+  box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 2px 0px #fff;
+  border-top: 1px solid #caa14c;
   padding: 15px;
-  border-radius: 0px 0px 4px 4px;
-  -webkit-box-shadow: inset 2px 0px 2px 0px rgba(255, 255, 255, 0.5);
-  box-shadow: inset 2px 0px 2px 0px rgba(255, 255, 255, 0.5);
-
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 #NewCourseForm span {
   color:#1234567;
@@ -252,13 +255,24 @@ a:hover {
 #NewCourseForm input[type="text"] {
   width:90%;
 }
-#NewCourseForm button[type="button"] {
+#NewCourseForm button {
   margin-top:10px;
   width:90%;
 }
-#NewCourseForm button[type="button"] i{
+#NewCourseForm button i {
   float:left;
   line-height: 20px;
+}
+#login, #register {
+  float:right;
+  margin-top:10px;
+  width:30%;
+}
+#bulkinsert {
+  width:65%;
+}
+#addcourses {
+  width:30%; 
 }
 
 /* display form errors */
@@ -335,9 +349,7 @@ a:hover {
 
 /* angular animation css */
 .animate-show-hide {
-  padding:10px;
-  border:1px solid black;
-  background:white;
+  margin-top:15px;
 }
  
 .animate-show-hide.ng-hide-add, .animate-show-hide.ng-hide-remove {

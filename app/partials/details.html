@@ -24,16 +24,19 @@
 			<div class="col-12">
 				<h2>Course Details</h2>
 				<div class="col-8">
-					<div class="col-4">
-						<button ng-click="showNewCourseForm()"><i class="fa fa-plus-circle"></i> New Course</button>
+					<div class="col-3">
+						<br/>
+						<button ng-click="showNewCourseForm()" class="btn btn-primary"><i class="fa fa-plus-circle"></i> New Course</button>
 					</div>
-					<div class="col-8">
+					<div class="col-9">
 						<i class="fa fa-plus-square"></i> Bulk Insert:
-						<input type="text" ng-model="courseListInput"/>
-						<input type="button" ng-click="onSubmit()" value="Insert">
+						<div class="form-inline">
+							<input type="text" ng-model="courseListInput" class="form-control" id="bulkinsert"/>
+							<button ng-click="onSubmit()" class="btn btn-primary" id="addcourses"><i class="fa fa-plus-circle"></i> Add Courses</button>
+						</div>
 					</div>
 				</div>
-				<div class="col-4"><i class="fa fa-search"></i> Search: <input ng-model="query"></div><br/><br/>
+				<div class="col-4"><i class="fa fa-search"></i> Search: <input type="text" ng-model="query" class="form-control"></div>
 				<div class="col-12 animate-show-hide" ng-show="isNewCourseFormVisible()">
 					<form name="form" ng-model="course" id="NewCourseForm" class="form-group css-form" novalidate>
 						<br />
@@ -86,10 +89,10 @@
 							</div>
 						</div>
 						<div class="col-3">
-							<button class="btn btn-danger" type="button" ng-click="hideNewCourseForm()"><i class="fa fa-ban"></i> Cancel</button>
+							<button class="btn btn-danger" ng-click="hideNewCourseForm()"><i class="fa fa-ban"></i> Cancel</button>
 						</div>
 						<div class="col-3 offset-6">
-							<button class="btn btn-success" type="button" ng-click="addNewCourse()" ng-disabled="form.$invalid"><i class="fa fa-plus"></i> Add Course</button>
+							<button class="btn btn-success" ng-click="addNewCourse()" ng-disabled="form.$invalid"><i class="fa fa-plus"></i> Add Course</button>
 						</div>
 						<br style="clear: both" />
 					</form>

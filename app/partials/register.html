@@ -22,7 +22,8 @@
 		<p>Profile Password:
 		<input type="text" ng-model="userRegistration.password" class="form-control" required/></p>
 		<p>
-		<button class="btn btn-success" type="button" ng-click="register()" ng-disabled="form.$invalid">Register</button>
+		<button class="btn btn-success" id="register" type="button" ng-click="register()" ng-disabled="form.$invalid">Register</button>
+		<br style="clear: both" />
 	</form>
 </div>
 <div class="main-content" ng-show="status()">
