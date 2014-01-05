@@ -28,7 +28,7 @@
 					</a>
 					<ul class="side-menu">
 						<li ng-repeat="link in menuLinks" 
-							ng-class="{ 'current': $index == selectedIndex }"
+							ng-class="{active: isActive('/{{link.link}}')}"
 							ng-click="itemClicked($index)"> 
 							<a href="#/{{link.link}}">
 								<i class="fa fa-{{link.icon}}"></i> {{link.text}}

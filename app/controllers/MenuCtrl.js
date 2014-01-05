@@ -4,7 +4,7 @@
 @purpose	highlight menu item
 */
 
-Grades.controller('MenuCtrl', function($scope) {
+Grades.controller('MenuCtrl', function($scope,$location) {
 
 	$scope.menuLinks = [
 		{link:"home",text:"Dashboard",icon:"home"},
@@ -12,9 +12,7 @@ Grades.controller('MenuCtrl', function($scope) {
 		{link:"started",text:"Getting Started",icon:"question"}
 	];
 
-	$scope.selectedIndex = 0;
-
-	$scope.itemClicked = function(index) {
-		$scope.selectedIndex = index;
-	};
+    $scope.isActive = function(route) {
+        return route === $location.path();
+    };
 });
