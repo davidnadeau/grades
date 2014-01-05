@@ -31,9 +31,10 @@
 						<input type="button" ng-click="onSubmit()" value="Insert">
 					</div>
 				</div>
-				<div class="col-4"><i class="fa fa-search"></i> Search: <input ng-model="query"></div>
-				<div class="col-12" ng-show="isNewCourseFormVisible()">
-					<form  name="form" ng-model="course" id="NewCourseForm" class="form-group" novalidate>
+				<div class="col-4"><i class="fa fa-search"></i> Search: <input ng-model="query"></div><br/><br/>
+				<div class="col-12 animate-show-hide" ng-show="isNewCourseFormVisible()">
+					<form name="form" ng-model="course" id="NewCourseForm" class="form-group css-form" novalidate>
+						<br />
 						<div class="col-6">
 							<div class="col-4">
 								<span>Subject: </span>
@@ -55,7 +56,7 @@
 								<span>Year: </span>
 							</div>
 							<div class="col-8">
-								<input type="text" class="form-control" ng-model="course.year" required/>
+								<input type="number" class="form-control" ng-model="course.year" required/>
 							</div>
 						</div>
 						<div class="col-6">
@@ -63,7 +64,7 @@
 								<span>Weight: </span>
 							</div>
 							<div class="col-8">
-								<input type="text" class="form-control" ng-model="course.weight" required/>
+								<input type="number" class="form-control" ng-model="course.weight" required/>
 							</div>
 						</div>
 						<div class="col-6">
@@ -71,7 +72,7 @@
 								<span>Mark: </span>
 							</div>
 							<div class="col-8">
-								<input type="text" class="form-control" ng-model="course.mark" required/>
+								<input type="number" class="form-control" ng-model="course.mark" required/>
 							</div>
 						</div>
 						<div class="col-6">

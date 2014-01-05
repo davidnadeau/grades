@@ -14,7 +14,7 @@
 	<h1><i class="fa fa-cogs"></i> Brock Grade Visualizer!</h1>
 </div>
 <div class="main-content" ng-hide="status()">
-	<form name="form" ng-model="userRegistration" class="form-group" novalidate>
+	<form name="form" ng-model="userRegistration" class="form-group css-form" novalidate>
 		<p>Profile Name:
 		<input type="text" ng-model="userRegistration.name" class="form-control" required/></p>
 		<p>Profile Major:
@@ -22,7 +22,7 @@
 		<p>Profile Password:
 		<input type="text" ng-model="userRegistration.password" class="form-control" required/></p>
 		<p>
-		<button class="btn btn-success" type="button" ng-click="register()" ng-disabled="form.$invalid">Login</button>
+		<button class="btn btn-success" type="button" ng-click="register()" ng-disabled="form.$invalid">Register</button>
 	</form>
 </div>
 <div class="main-content" ng-show="status()">

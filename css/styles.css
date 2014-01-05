@@ -235,7 +235,6 @@ a:hover {
 
 /* STYLE COURSE ADDITION FORM */
 #NewCourseForm {
-  margin-top:5px;
   background-color: #fefefe;
   padding: 15px;
   border-radius: 0px 0px 4px 4px;
@@ -247,6 +246,9 @@ a:hover {
   color:#1234567;
   width:80%;
 }
+#NewCourseForm input[type="number"] {
+  width:90%;
+}
 #NewCourseForm input[type="text"] {
   width:90%;
 }
@@ -257,6 +259,15 @@ a:hover {
 #NewCourseForm button[type="button"] i{
   float:left;
   line-height: 20px;
+}
+
+/* display form errors */
+.css-form input.ng-invalid.ng-dirty {
+  background-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-dirty {
+  background-color: #78FA89;
 }
 
 /* STYLE USER SUMMARY BOXES */
@@ -322,6 +333,30 @@ a:hover {
 .container .row .offset-11 {margin-left:91.66666666666666%}
 .container .row .offset-12 {margin-left:100%;}
 
+/* anuglar animation css */
+.animate-show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+ 
+.animate-show-hide.ng-hide-add, .animate-show-hide.ng-hide-remove {
+  -webkit-transition:all linear 0.5s;
+  -moz-transition:all linear 0.5s;
+  -o-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+  display:block!important;
+}
+ 
+.animate-show-hide.ng-hide-add.ng-hide-add-active,
+.animate-show-hide.ng-hide-remove {
+  opacity:0;
+}
+ 
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove.ng-hide-remove-active {
+  opacity:1;
+}
 
 /* STYLE COURSE LIST, TABLE CSS TAKEN FROM:
    http://johnsardine.com/freebies/dl-html-css/simple-little-tab/ */
