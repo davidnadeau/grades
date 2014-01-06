@@ -149,11 +149,11 @@ Grades.factory('QueryCourses', function (CurrentUser) {
 			data.push(Courses.getGradesByYear("Overall Average"));
 			var fake = Courses.getGradesByYear("Minor Average");
 			for (var i=0;i<fake.values.length;i++)
-				fake.values[i][1] = fake.values[i][1]*getRandomArbitary(0.7,1.2);
+				fake.values[i][1] = fake.values[i][1]*getRandomArbitary(0.7,1.1);
 			data.push(fake);
 			var faker = Courses.getGradesByYear("Major Average");
 			for (var i=0;i<faker.values.length;i++)
-				faker.values[i][1] = faker.values[i][1]*getRandomArbitary(0.8,1.2);
+				faker.values[i][1] = faker.values[i][1]*getRandomArbitary(0.7,1.1);
 			data.push(faker);
 
 			return data;

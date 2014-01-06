@@ -4,7 +4,7 @@
 @purpose	Handle all calls to db/forms dealing with user profiles
 */
 
-Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $rootScope, $cookieStore, $location) {
+Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $cookieStore, $location) {
 	$scope.user = CurrentUser.getUser();
 	
 	if (typeof $cookieStore.get('name') !== 'undefined') {
@@ -67,6 +67,7 @@ Grades.controller('UserCtrl', function ($scope, Users, CurrentUser, $rootScope, 
 					CurrentUser.setUser(response);
 					CurrentUser.logIn();
 					$scope.user = CurrentUser.getUser();
+					$cookieStore.put('name',$scope.user.name);					
 					$location.path('#/home').replace();
 			}
 		);

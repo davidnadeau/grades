@@ -54,6 +54,11 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 		var courseData = [];
 		$scope.course.subject = $scope.course.subject.toUpperCase();
 		$scope.course.number = $scope.course.number.toUpperCase();
+		$scope.course.credit =		$scope.course.credit === 'y' 
+								||	$scope.course.credit === 'Y'
+								||	$scope.course.credit === '1' 
+								?	1: 0;
+								
 		courseData.push($scope.course);
 
 		Courses
