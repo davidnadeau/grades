@@ -5,18 +5,44 @@
 */
 
 Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatCourses) {
+
 	var newCourseFormVisibile = false;
 
-	refreshCourses();
+	//refresh courses
+	$scope.courses = Courses.query({},function() {
+		$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
+		$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
+		$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+		$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+		$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+		$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
+
+		$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
+		$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
+	});
 
 	$scope.onSubmit = function() {
 		var courses = FormatCourses.format($scope.courseListInput);
 		Courses
-			.insert({
-				bulkData: courses
-			}, function(response) {
-				refreshCourses():
-			});
+			.insert(
+				{
+					bulkData: courses
+				}, 
+				function(response) {
+					//refresh courses
+					$scope.courses = Courses.query({},function() {
+						$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
+						$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
+						$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+						$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+						$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+						$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
+
+						$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
+						$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
+					});
+				}
+			);
 		$scope.courseListInput = "";
 	};
 	$scope.showNewCourseForm = function() {
@@ -41,34 +67,48 @@ Grades.controller('CourseCtrl', function ($scope, Courses, QueryCourses, FormatC
 		courseData.push($scope.course);
 
 		Courses
-			.insert({
-				bulkData: courseData
-			}, function(response) {
-				refreshCourses();
-			});
+			.insert(
+				{
+					bulkData: courseData
+				}, 
+				function(response) {
+					//refresh courses
+					$scope.courses = Courses.query({},function() {
+						$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
+						$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
+						$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+						$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+						$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+						$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
+
+						$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
+						$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
+					});
+				}
+			);
 		newCourseFormVisibile = false;
 		$scope.course = {};
 	};
 	$scope.deleteCourse = function(course) {
 		Courses
-			.delete({
-				id: course.id
-			}, function(response) {
-				refreshCourses();
-			});
+			.delete(
+				{
+					id: course.id
+				}, 
+				function(response) {
+					//refresh courses
+					$scope.courses = Courses.query({},function() {
+						$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
+						$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
+						$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
+						$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
+						$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
+						$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
+
+						$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
+						$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
+					});
+				}
+			);
 	};
-
-	function refreshCourses() {
-		$scope.courses = Courses.query({},function() {
-			$scope.overallAverage = QueryCourses.overalAverage($scope.courses);
-			$scope.minorAverage = QueryCourses.minorAverage($scope.courses);
-			$scope.majorAverage = QueryCourses.majorAverage($scope.courses);
-			$scope.totalCredits = QueryCourses.totalCredits($scope.courses);
-			$scope.majorCredits = QueryCourses.majorCredits($scope.courses);
-			$scope.minorCredits = QueryCourses.minorCredits($scope.courses);
-
-			$scope.courseDistribution = QueryCourses.courseDistribution($scope.courses);
-			$scope.gradesByYear = QueryCourses.gradesByYear($scope.courses);
-		});
-	}
 });
